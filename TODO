@@ -1,0 +1,11 @@
+Add in table_styles helper
+
+Add in helper functions to render the views
+
+TESTS!
+
+Determine string/symbol stragegy
+
+Determine initialization
+
+Determine best place to call add_foo functions.
