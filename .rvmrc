@@ -1,1 +1,1 @@
-rvm --create use jruby-1.6.5@hash_tabler
+rvm --create use jruby-1.6.5@hashbrowns
