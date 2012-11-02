@@ -19,6 +19,10 @@ module DisplayHelper
   def add_important_name(name, value, status)
     name, value, status = name.to_s, value.to_s, status.to_s
     status = @status_hash[status] if @status_hash.has_key(status)
+    if value.kind_of?(Proc)
+      @important[name] = value 
+      return
+    end
 
     @important[name] = Hash.new unless @important.has_key?(name)
     @important[name][value] = status
@@ -31,6 +35,12 @@ module DisplayHelper
   end
 
   def importantize(key, value)
+    return "nil key" if key.nil?
+    return "nil value" if value.nil?
+    return "#{key} not important" unless @important.has_key?(key)
+    return "#{@important[key].call(value)}" if @important[key].kind_of?(Proc)
+    return "#{value} not important for #{key}" unless @important[key].has_key?(value)
+    return "#{@important[key][value]}"
   end
 
   def display_name(name, table)
