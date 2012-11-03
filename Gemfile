@@ -12,3 +12,5 @@ group :development do
   gem "jeweler"
   #gem "rcov"
 end
+
+gem "haml-rails"

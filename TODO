@@ -2,6 +2,16 @@ TESTS!
 
 Determine string/symbol stragegy
 
-Determine initialization
+Fix initialization so that it isn't on app startup.
+  Ideally this would not require a restart for new settings.
+  Determine best place to call add_foo functions.
 
-Determine best place to call add_foo functions.
+Engine isn't a railtie anymore, rename it
+
+Finish example code
+  views
+  controllers
+  tests?
+  two or three more tables
+  more fields to tables
+  more records in db
