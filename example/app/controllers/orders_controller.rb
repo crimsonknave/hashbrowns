@@ -2,7 +2,12 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    orders = Order.all
+
+    @orders = []
+    orders.each do |o|
+      @orders.push(o.attributes.merge({"customer" => o.customer.attributes}))
+    end
 
     respond_to do |format|
       format.html # index.html.erb

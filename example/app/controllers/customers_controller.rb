@@ -2,7 +2,14 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    customers = Customer.all
+
+    @customers = []
+    customers.each do |c|
+      @customers.push(c.attributes.merge({"orders" => c.orders.map{|o| o.attributes}}))
+    end
+
+    puts HashBrowns.conf.inspect
 
     respond_to do |format|
       format.html # index.html.erb
