@@ -1,32 +1,9 @@
 <h1>Listing destinations</h1>
 
-<table>
-  <tr>
-    <th>Address1</th>
-    <th>Address2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @destinations.each do |destination| %>
-  <tr>
-    <td><%= destination.address1 %></td>
-    <td><%= destination.address2 %></td>
-    <td><%= destination.city %></td>
-    <td><%= destination.state %></td>
-    <td><%= destination.zip %></td>
-    <td><%= destination.phone %></td>
-    <td><%= link_to 'Show', destination %></td>
-    <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
-    <td><%= link_to 'Destroy', destination, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<h5>Summary</h5>
+<%= render_hash_to_overview(:destinations, @destinations) %>
+<h5>Payload</h5>
+<%= render_hash_to_table(@destinations) %>
 
 <br />
 

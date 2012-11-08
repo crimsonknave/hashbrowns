@@ -13,5 +13,22 @@ HashBrowns.configure do |config|
   config.add_overview_field(:orders, :first_name, :customer)
   config.add_overview_field(:orders, :last_name, :customer)
 
+  config.add_overview_field(:destinations, :address1)
+  config.add_overview_field(:destinations, :city)
+  config.add_overview_field(:destinations, :name, :order)
+  config.add_overview_field(:destinations, :status, :order)
+
+
   config.add_formatted_name(:name, :order_name, :orders)
+  config.add_formatted_name(:name, :order_name, :order)
+  config.add_formatted_name(:status, :order_status, :order)
+
+  #Must also set up parent hash for these
+  config.add_links_for_id(:order_name, [:order, :orders])
+  config.add_link_by_parents([:order, :orders], :id, "/orders/")
+  
+  config.add_important_name(:order_status, :pending, :green)
+
+  config.ignore_important_case = true
+
 end

@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
 
     @orders = []
     orders.each do |o|
-      @orders.push(o.attributes.merge({"customer" => o.customer.attributes}))
+      @orders.push(o.attributes.merge({"customer" => o.customer.attributes, "destinations" => o.destinations.map(&:attributes)}))
     end
 
     respond_to do |format|

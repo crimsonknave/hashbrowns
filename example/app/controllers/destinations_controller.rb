@@ -2,7 +2,13 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.all
+    puts HashBrowns.conf.inspect
+    destinations = Destination.all
+
+    @destinations = []
+    destinations.each do |d|
+      @destinations.push(d.attributes.merge({"order" => d.order.attributes}))
+    end
 
     respond_to do |format|
       format.html # index.html.erb
