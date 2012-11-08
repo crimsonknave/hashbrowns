@@ -6,6 +6,8 @@ module HashBrowns
     end
 
     def importantize(key, value)
+      value = value.downcase if HashBrowns.conf.ignore_important_case && value.kind_of?(String)
+      #puts "k: #{key}, v: #{value}"
       return "nil key" if key.nil?
       return "nil value" if value.nil?
       return "#{key} not important" unless HashBrowns.conf.important.has_key?(key)

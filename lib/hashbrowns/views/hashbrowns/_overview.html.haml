@@ -1,17 +1,17 @@
 %table{:class => table_styles}
   - if object.kind_of?(Array)
     %tr
-      - fields.each do |k, path|
+      - overview_fields(type).each do |k, path|
         %th= k.to_s.humanize
     - object.each do |o|
       %tr
-        - fields.each do |k, path|
+        - overview_fields(type).each do |k, path|
           - parent = path.empty? ? type : path[-2]
           - path.shift
           - value, id = get_value_and_id(o, path)
           %td{:class => importantize(k, value)}= linkify(k, value, parent, id)
   - else
-    - fields.each do |k, path|
+    - overview_fields(type).each do |k, path|
       - parent = path.empty? ? type : path[-2]
       - path.shift
       - value, id = get_value_and_id(object, path)

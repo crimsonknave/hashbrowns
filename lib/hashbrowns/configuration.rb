@@ -1,16 +1,6 @@
 module HashBrowns
   class Configuration
-    attr_accessor :link_hash
-    attr_accessor :link_for_id
-    attr_accessor :links
-    attr_accessor :link_parents
-    attr_accessor :key_fields
-    attr_accessor :parent_overrides
-    attr_accessor :status_hash
-    attr_accessor :table_styles
-    attr_accessor :key_fields
-    attr_accessor :pretty_names
-    attr_accessor :important
+    attr_accessor :link_hash, :link_for_id, :links, :link_parents, :key_fields, :parent_overrides, :status_hash, :table_styles, :key_fields, :pretty_names, :important, :ignore_important_case
 
     VALID_STATUSES = %w(success info warning error)
 
@@ -21,6 +11,7 @@ module HashBrowns
       @link_parents = Hash.new
       @pretty_names = Hash.new
       @important = Hash.new
+      @ignore_important_case = false
 
       @status_hash = {
         "green" => "success",
@@ -63,6 +54,7 @@ module HashBrowns
 
     def add_important_name(name, value, status)
       name, value, status = name.to_s, value.to_s, status.to_s
+      value = value.downcase if @ignore_important_case && value.kind_of?(String)
       status = @status_hash[status] if @status_hash.has_key?(status)
       if value.kind_of?(Proc)
         @important[name] = value 
@@ -88,7 +80,15 @@ module HashBrowns
     end
 
     def add_link_for_id(key, parent)
-      @link_for_id[key.to_s] = parent.to_s
+      key = key.to_s
+      @link_for_id[key] = Set.new if @link_for_id[key].nil?
+      @link_for_id[key].add(parent.to_s)
+    end
+
+    def add_links_for_id(key, parents)
+      key = key.to_s
+      @link_for_id[key] = Set.new if @link_for_id[key].nil?
+      @link_for_id[key].merge(parents.map(&:to_s))
     end
 
     def add_link_by_key(key, path)
@@ -103,10 +103,19 @@ module HashBrowns
       end
     end
 
+    def add_link_by_parents(parents, key, path)
+      parents.each do |parent|
+        if @link_parents.has_key?(parent.to_s)
+          @link_parents[parent.to_s][key.to_s] = path.to_s
+        else
+          @link_parents[parent.to_s] = { key.to_s => path.to_s }
+        end
+      end
+    end
+
     private
     def insert_value(hash, value, path)
       current = path.shift
-      puts "current: #{current}, value: #{value}"
       if current.nil?
         hash[:values] = Set.new unless hash.has_key?(:values)
         hash[:values].add(value)
