@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "hashbrowns"
   gem.homepage = "http://github.com/crimsonknave/hashbrowns"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Cooks your hashes into html"
+  gem.description = "Provides a DSL and helpers to convert hashes into html tables.  Allows you to create overviews with selected fields, define keys whose values link to a url and so on."
   gem.email = "crimsonknave@gmail.com"
   gem.authors = ["crimsonknave"]
   # dependencies defined in Gemfile
