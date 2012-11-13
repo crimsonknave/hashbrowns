@@ -52,14 +52,15 @@ module HashBrowns
       insert_value(@key_fields[type], value, path)
     end
 
-    def add_important_name(name, value, status)
+    def add_important_name(name, value, status=false)
       name, value, status = name.to_s, value.to_s, status.to_s
       value = value.downcase if @ignore_important_case && value.kind_of?(String)
-      status = @status_hash[status] if @status_hash.has_key?(status)
       if value.kind_of?(Proc)
         @important[name] = value 
         return
       end
+      return false unless status
+      status = @status_hash[status] if @status_hash.has_key?(status)
 
       @important[name] = Hash.new unless @important.has_key?(name)
       @important[name][value] = status
