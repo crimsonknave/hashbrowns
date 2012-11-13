@@ -10,6 +10,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'rake'
+require 'rake/dsl_definition'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
