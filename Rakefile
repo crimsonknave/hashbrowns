@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'bundler'
+require 'rake/dsl_definition'
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
