@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{hashbrowns}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{crimsonknave}]
-  s.date = %q{2012-11-02}
+  s.date = %q{2012-11-13}
   s.description = %q{TODO: longer description of your gem}
   s.email = %q{crimsonknave@gmail.com}
   s.extra_rdoc_files = [
@@ -38,6 +38,8 @@ Gem::Specification.new do |s|
     "example/app/assets/javascripts/customers.js.coffee",
     "example/app/assets/javascripts/destinations.js.coffee",
     "example/app/assets/javascripts/orders.js.coffee",
+    "example/app/assets/stylesheets/application.css.scss",
+    "example/app/assets/stylesheets/bootstrap_and_overrides.css.scss",
     "example/app/assets/stylesheets/customers.css.scss",
     "example/app/assets/stylesheets/destinations.css.scss",
     "example/app/assets/stylesheets/orders.css.scss",
@@ -89,6 +91,7 @@ Gem::Specification.new do |s|
     "example/config/environments/production.rb",
     "example/config/environments/test.rb",
     "example/config/initializers/backtrace_silencers.rb",
+    "example/config/initializers/hashbrowns.rb",
     "example/config/initializers/inflections.rb",
     "example/config/initializers/mime_types.rb",
     "example/config/initializers/secret_token.rb",
@@ -132,7 +135,17 @@ Gem::Specification.new do |s|
     "example/vendor/assets/javascripts/.gitkeep",
     "example/vendor/assets/stylesheets/.gitkeep",
     "example/vendor/plugins/.gitkeep",
+    "hashbrowns.gemspec",
     "lib/hashbrowns.rb",
+    "lib/hashbrowns/configuration.rb",
+    "lib/hashbrowns/helpers/display_helpers.rb",
+    "lib/hashbrowns/helpers/links_helpers.rb",
+    "lib/hashbrowns/helpers/overview_helpers.rb",
+    "lib/hashbrowns/helpers/relations_helpers.rb",
+    "lib/hashbrowns/helpers/renderer_helpers.rb",
+    "lib/hashbrowns/railtie.rb",
+    "lib/hashbrowns/views/hashbrowns/_overview.html.haml",
+    "lib/hashbrowns/views/hashbrowns/_recursive_hash_tabler.html.haml",
     "test/helper.rb",
     "test/test_hash_tabler.rb"
   ]
