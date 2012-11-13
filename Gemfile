@@ -14,4 +14,3 @@ group :development do
 end
 
 gem "haml-rails"
-gem 'rake', '0.8.7'
