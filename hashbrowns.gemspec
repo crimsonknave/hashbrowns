@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{hashbrowns}
-  s.version = "0.1.1"
+  s.name = "hashbrowns"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{crimsonknave}]
-  s.date = %q{2012-11-13}
-  s.description = %q{Provides a DSL and helpers to convert hashes into html tables.  Allows you to create overviews with selected fields, define keys whose values link to a url and so on.}
-  s.email = %q{crimsonknave@gmail.com}
+  s.authors = ["crimsonknave"]
+  s.date = "2012-11-13"
+  s.description = "Provides a DSL and helpers to convert hashes into html tables.  Allows you to create overviews with selected fields, define keys whose values link to a url and so on."
+  s.email = "crimsonknave@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md",
@@ -149,11 +149,11 @@ Gem::Specification.new do |s|
     "test/helper.rb",
     "test/test_hash_tabler.rb"
   ]
-  s.homepage = %q{http://github.com/crimsonknave/hashbrowns}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.9}
-  s.summary = %q{Cooks your hashes into html}
+  s.homepage = "http://github.com/crimsonknave/hashbrowns"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.11"
+  s.summary = "Cooks your hashes into html"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
