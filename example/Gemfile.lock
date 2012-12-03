@@ -1,7 +1,7 @@
 PATH
   remote: ../
   specs:
-    hashbrowns (0.1.0)
+    hashbrowns (0.1.5)
       haml-rails
 
 GEM

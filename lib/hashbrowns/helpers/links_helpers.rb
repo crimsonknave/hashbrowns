@@ -4,7 +4,7 @@ module HashBrowns
       return "" if value.nil? or key.nil?
       key, value, parent, id, text = key.to_s, value.to_s, parent.to_s, id.to_s, text.to_s
       text = value if text
-      puts "k #{key}, v #{value}, p #{parent} i #{id} t #{text}"
+      #puts "k #{key}, v #{value}, p #{parent} i #{id} t #{text}"
       return link_to(text, HashBrowns.conf.link_parents[parent][key]+value).html_safe if parent && HashBrowns.conf.link_parents.has_key?(parent) && HashBrowns.conf.link_parents[parent].has_key?(key)
       return link_to(text, HashBrowns.conf.link_hash[key]+value).html_safe if HashBrowns.conf.link_hash.has_key?(key)
       return link_to(text, value).html_safe if HashBrowns.conf.links.include?(key)

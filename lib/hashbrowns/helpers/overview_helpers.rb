@@ -5,7 +5,7 @@ module HashBrowns
       type = type.to_s
       fields = HashBrowns.conf.key_fields[type]
       return [] unless fields
-      puts "calling field parser now"
+      #puts "calling field parser now"
       return field_parser(type, fields, [])
     end
 
