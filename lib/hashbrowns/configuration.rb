@@ -55,7 +55,7 @@ module HashBrowns
     def add_important_name(name, value, status=false)
       name = name.to_s
       if value.kind_of?(Proc)
-        @important[name] = value 
+        @important[name] = value
         return
       end
       value, status = value.to_s, status.to_s
@@ -95,6 +95,12 @@ module HashBrowns
 
     def add_link_by_key(key, path)
       @link_hash[key.to_s] = path.to_s
+    end
+
+    def add_links_by_keys(keys, path)
+      keys.each do |key|
+        @link_hash[key.to_s] = path.to_s
+      end
     end
 
     def add_link_by_parent(parent, key, path)
