@@ -19,8 +19,8 @@ module HashBrowns
     def display_name(name, table)
       names = HashBrowns.conf.pretty_names[name]
       return name unless names
-      return names[table] ? names[table] : name
       return names["all"] if names.has_key?("all")
+      return names[table] ? names[table] : name
     end
 
   end
