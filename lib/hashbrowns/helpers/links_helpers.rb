@@ -1,7 +1,7 @@
 module HashBrowns
   module LinksHelpers
     def linkify(key, value, parent = false, id = false, text = false)
-      return "" if value.nil? or key.nil?
+      return "" if value.nil? or key.nil? or !value or !key
       key, value, parent, id, text = key.to_s, value.to_s, parent.to_s, id.to_s, text.to_s
       text = value if text
       #puts "k #{key}, v #{value}, p #{parent} i #{id} t #{text}"
