@@ -1,8 +1,11 @@
-%table{:class => table_styles}
+%table{:class => "#{table_styles}#{" #{table_with_header_styles}" if object.kind_of?(Array)}"}
   - if object.kind_of?(Array)
-    %tr
+    %thead
       - overview_fields(type).each do |k, path|
-        %th= k.to_s.humanize
+        - if header_styles(k)
+          %th{:class => header_styles(k)}= k.to_s.humanize
+        - else
+          %th= k.to_s.humanize
     - object.each do |o|
       %tr
         - overview_fields(type).each do |k, path|

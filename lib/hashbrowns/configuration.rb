@@ -1,6 +1,6 @@
 module HashBrowns
   class Configuration
-    attr_accessor :link_hash, :link_for_id, :links, :link_parents, :key_fields, :parent_overrides, :status_hash, :table_styles, :key_fields, :pretty_names, :important, :ignore_important_case
+    attr_accessor :link_hash, :link_for_id, :links, :link_parents, :key_fields, :parent_overrides, :status_hash, :table_styles, :key_fields, :pretty_names, :important, :ignore_important_case, :table_with_header_styles, :header_styles
 
     VALID_STATUSES = %w(success info warning error)
 
@@ -21,6 +21,11 @@ module HashBrowns
       }
 
       @table_styles = Set.new
+      @table_with_header_styles = Set.new
+      @header_styles = Hash.new
+      @header_styles.default_proc = proc do |h,k|
+        h[k] = Set.new
+      end
       @key_fields = Hash.new
       @parent_overrides = Set.new
 
@@ -31,11 +36,23 @@ module HashBrowns
       @status_hash[name] = status
     end
 
+    def add_table_with_header_style(style)
+      @table_with_header_styles.add(style)
+    end
+    def add_table_with_header_styles(*styles)
+      @table_with_header_styles.merge(styles)
+    end
     def add_table_style(style)
       @table_styles.add(style)
     end
     def add_table_styles(*styles)
       @table_styles.merge(styles)
+    end
+    def add_header_style(header, style)
+      @header_styles[header].add(style)
+    end
+    def add_header_styles(header, *styles)
+      @header_styles[header].merge(styles)
     end
 
     def add_parent_overrides(*parents)
@@ -61,7 +78,7 @@ module HashBrowns
       value, status = value.to_s, status.to_s
       value = value.downcase if @ignore_important_case && value.kind_of?(String)
       return false unless status
-      status = @status_hash[status] if @status_hash.has_key?(status)
+      #status = @status_hash[status] if @status_hash.has_key?(status)
 
       @important[name] = Hash.new unless @important.has_key?(name)
       @important[name][value] = status

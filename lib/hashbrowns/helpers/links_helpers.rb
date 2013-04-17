@@ -8,7 +8,7 @@ module HashBrowns
       text = value if text
       return link_to(text, HashBrowns.conf.link_parents[parent][key]+value).html_safe if parent && HashBrowns.conf.link_parents.has_key?(parent) && HashBrowns.conf.link_parents[parent].has_key?(key)
       return link_to(text, HashBrowns.conf.link_hash[key]+value).html_safe if HashBrowns.conf.link_hash.has_key?(key)
-      return link_to(text, value).html_safe if HashBrowns.conf.links.include?(key)
+      return link_to(text, value, :target => "_blank").html_safe if HashBrowns.conf.links.include?(key)
       return link_to(text, HashBrowns.conf.link_parents[parent]["id"]+id).html_safe if id && parent && HashBrowns.conf.link_for_id.has_key?(key) && HashBrowns.conf.link_for_id[key].include?(parent)
       return value
     end
